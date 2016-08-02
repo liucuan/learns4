@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--工厂 -->
+    <bean id="jmsConnectionFactory" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:comp/env/jms/ComnectionFactory"/>
+    </bean>
+    <!-- 队列-->
+    <bean id="jmsQueue" class="org.springframework.jndi.JndiObjectFactoryBean" lazy-init="true">
+        <property name="jndiName" value="java:comp/env/jms/Queue"/>
+    </bean>
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate" lazy-init="true">
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+        <property name="defaultDestination" ref="jmsQueue"/>
+    </bean>
+    <!--<bean id="jmsSender" class="com.jms.MessageSender" lazy-init="true">
+        <property name="jmsTemplate" ref="jmsTemplate"/>
+    </bean>
+    <bean id="jmsReceiver" class="com.jms.MessageReciever"></bean>
+    <bean id="listenerContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="jmsConnectionFactory"></property>
+        <property name="destination" ref="jmsQueue"></property>
+        <property name="messageListener" ref="jmsReceiver"></property>
+        <property name="autoStartup" value="true"></property>
+    </bean>-->
+</beans>
