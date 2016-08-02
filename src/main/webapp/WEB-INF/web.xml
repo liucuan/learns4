@@ -6,7 +6,7 @@
 	<display-name>Spring MVC Application</display-name>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:conf/jms-activemq.xml</param-value>
+		<param-value>classpath:conf/spring-*.xml</param-value>
 	</context-param>
     <servlet>
 		<servlet-name>mvc-dispatcher</servlet-name>
