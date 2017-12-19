@@ -1,6 +1,7 @@
 package com.tone.mvc;
 
 import com.tone.ls4.genericservice.*;
+import com.tone.ls4.mytag.MyTag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.testng.annotations.Test;
@@ -17,11 +18,18 @@ public class GenericRepsorityTest extends BaseTest {
     private UserService userService;
     @Autowired
     private OrganizationService organizationService;
-//    @Autowired
+    @Autowired
+    private MyTag myTag;
+    //    @Autowired
     private Map<String, BaseService> map;
 
-//    @Autowired
+    //    @Autowired
     private List<BaseService> list;
+
+    @Test
+    public void myTagTest() {
+        System.out.println(myTag);
+    }
 
     @Test
     public void usTest() {
