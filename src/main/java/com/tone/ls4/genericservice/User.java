@@ -10,6 +10,14 @@ public class User implements Serializable {
     private String name;
     private Long id;
 
+    public User() {
+    }
+
+    public User(String name, Long id) {
+        this.name = name;
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
