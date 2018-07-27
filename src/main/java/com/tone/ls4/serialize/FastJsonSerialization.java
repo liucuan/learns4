@@ -7,6 +7,7 @@ import java.io.IOException;
  * @date 2018/5/16
  */
 public class FastJsonSerialization implements Serialization {
+
     @Override
     public byte[] serialize(Object obj) throws IOException {
         return new byte[0];

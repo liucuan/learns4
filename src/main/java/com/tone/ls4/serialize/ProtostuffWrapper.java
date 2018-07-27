@@ -5,6 +5,7 @@ package com.tone.ls4.serialize;
  * @date 2018/5/16
  */
 public class ProtostuffWrapper<T> {
+
     private T data;
 
     public static <T> ProtostuffWrapper<T> builder(T data) {

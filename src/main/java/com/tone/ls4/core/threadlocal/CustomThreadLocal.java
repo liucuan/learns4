@@ -5,10 +5,11 @@ package com.tone.ls4.core.threadlocal;
  * @date 2018/3/27
  */
 public class CustomThreadLocal {
+
     static ThreadLocal<String> threadLocal = new ThreadLocal<>();
 
     public static void main(String[] args) {
-        new Thread(new Runnable(){
+        new Thread(new Runnable() {
             @Override
             public void run() {
                 CustomThreadLocal.threadLocal.set("xxx");
@@ -18,6 +19,7 @@ public class CustomThreadLocal {
     }
 
     private static class Service {
+
         public void call() {
             System.out.println("Service:" + Thread.currentThread().getName());
             System.out.println("Service:" + CustomThreadLocal.threadLocal.get());
@@ -26,6 +28,7 @@ public class CustomThreadLocal {
     }
 
     private static class Dao {
+
         public void call() {
             System.out.println("==========================");
             System.out.println("Dao:" + Thread.currentThread().getName());

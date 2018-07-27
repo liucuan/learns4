@@ -5,6 +5,7 @@ package com.tone.ls4.core.threadlocal;
  * @date 2018/3/27
  */
 public class CustomThreadLocal3 {
+
     /**
      * InheritableThreadLocal这个类继承了ThreadLocal，重写了3个方法，在当前线程上创建一个新的线程实例Thread时，会把这些线程变量从当前线程传递给新的线程实例。
      * <p>
@@ -16,7 +17,7 @@ public class CustomThreadLocal3 {
     static ThreadLocal<String> threadLocal = new InheritableThreadLocal<>();
 
     public static void main(String[] args) {
-        new Thread(new Runnable(){
+        new Thread(new Runnable() {
             @Override
             public void run() {
                 CustomThreadLocal3.threadLocal.set("xxx");
@@ -26,6 +27,7 @@ public class CustomThreadLocal3 {
     }
 
     private static class Service {
+
         public void call() {
             System.out.println("Service:" + Thread.currentThread().getName());
             System.out.println("Service:" + CustomThreadLocal3.threadLocal.get());
@@ -34,6 +36,7 @@ public class CustomThreadLocal3 {
     }
 
     private static class Dao {
+
         public void call() {
             System.out.println("==========================");
             System.out.println("Dao:" + Thread.currentThread().getName());

@@ -4,17 +4,28 @@ import com.dyuproject.protostuff.LinkedBuffer;
 import com.dyuproject.protostuff.ProtostuffIOUtil;
 import com.dyuproject.protostuff.Schema;
 import com.dyuproject.protostuff.runtime.RuntimeSchema;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Hashtable;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.SortedMap;
+import java.util.Stack;
+import java.util.TreeMap;
+import java.util.Vector;
+import java.util.concurrent.CopyOnWriteArrayList;
 import org.objenesis.Objenesis;
 import org.objenesis.ObjenesisStd;
-
-import java.util.*;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * @author zhaoxiang.liu
  * @date 2018/5/16
  */
 public class ProtostuffSerialization implements Serialization {
+
     /**
      * 需要使用包装类进行序列化/反序列化的class集合
      */
@@ -28,7 +39,8 @@ public class ProtostuffSerialization implements Serialization {
     /**
      * 序列化/反序列化包装类 Schema 对象
      */
-    private static final Schema<ProtostuffWrapper> WRAPPER_SCHEMA = RuntimeSchema.createFrom(WRAPPER_CLASS);
+    private static final Schema<ProtostuffWrapper> WRAPPER_SCHEMA = RuntimeSchema
+            .createFrom(WRAPPER_CLASS);
 
     /**
      * 预定义一些Protostuff无法直接序列化/反序列化的对象

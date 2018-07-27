@@ -1,6 +1,7 @@
 package com.tone.ls4.mytag;
 
 public class MyTag {
+
     private String id;
     private String name;
 

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 @Order(2)
 @Service
 public class OrganizationService extends BaseService<Organization> {
+
     public OrganizationService() {
         System.out.println("construct OrganizationService");
     }

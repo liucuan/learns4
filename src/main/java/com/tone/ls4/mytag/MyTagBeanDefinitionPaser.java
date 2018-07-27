@@ -6,6 +6,7 @@ import org.springframework.util.StringUtils;
 import org.w3c.dom.Element;
 
 public class MyTagBeanDefinitionPaser extends AbstractSingleBeanDefinitionParser {
+
     @Override
     protected Class<?> getBeanClass(Element element) {
         return MyTag.class;

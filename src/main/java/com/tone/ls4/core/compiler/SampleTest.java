@@ -7,6 +7,7 @@ import java.lang.reflect.Method;
  * @date 2018/3/28
  */
 public class SampleTest {
+
     public static void main(String[] args) {
         String classDataRootPath = "D:\\dev\\github\\learns4\\target";
         FileSystemClassLoader fscl1 = new FileSystemClassLoader(classDataRootPath);
@@ -19,7 +20,7 @@ public class SampleTest {
             Object obj2 = class2.newInstance();
             Method setSampleMethod = class1.getMethod("setSample", java.lang.Object.class);
             setSampleMethod.invoke(obj1, obj2);
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

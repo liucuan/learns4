@@ -2,7 +2,6 @@ package com.tone.ls4.serialize;
 
 import com.caucho.hessian.io.Hessian2Input;
 import com.caucho.hessian.io.Hessian2Output;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -12,6 +11,7 @@ import java.io.IOException;
  * @date 2018/5/16
  */
 public class Hessian2Serialization implements Serialization {
+
     //使用 Hessian 序列化包含 BigDecimal 字段的对象时会导致其值一直为0，
     // 不注意这个bug会导致很大的问题，在最新的4.0.51版本仍然可以复现。
     // 解决方案也很简单，指定 BigDecimal 的序列化器即可，通过添加两个文件解决这个bug

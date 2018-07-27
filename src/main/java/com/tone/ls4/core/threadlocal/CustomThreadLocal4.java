@@ -8,6 +8,7 @@ import java.util.concurrent.Executors;
  * @date 2018/3/27
  */
 public class CustomThreadLocal4 {
+
     static ThreadLocal<String> threadLocal = new InheritableThreadLocal<>();
 
     static ExecutorService pool = Executors.newFixedThreadPool(2);
@@ -23,12 +24,14 @@ public class CustomThreadLocal4 {
     }
 
     private static class Service {
+
         public void call() {
             CustomThreadLocal4.pool.execute(() -> new Dao().call());
         }
     }
 
     private static class Dao {
+
         public void call() {
             System.out.println("Dao:" + CustomThreadLocal4.threadLocal.get());
         }

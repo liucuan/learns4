@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 @Lazy
 @Service
 public class UserService extends BaseService<User> {
+
     public UserService() {
         System.out.println("construct UserService.");
     }

@@ -1,6 +1,9 @@
 package com.tone.ls4.core.concur;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
@@ -9,7 +12,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 
 public class CompletableFutureApp {
-    static ExecutorService executor = Executors.newFixedThreadPool(3, new ThreadFactory(){
+
+    static ExecutorService executor = Executors.newFixedThreadPool(3, new ThreadFactory() {
         int count = 1;
 
         @Override
@@ -51,22 +55,24 @@ public class CompletableFutureApp {
     }
 
     static void thenApplyAsyncExample() {
-        CompletableFuture<String> cf = CompletableFuture.completedFuture("message").thenApplyAsync(s -> {
-            assertTrue(Thread.currentThread().isDaemon());
-            randomSleep(2);
-            return s.toUpperCase();
-        });
+        CompletableFuture<String> cf = CompletableFuture.completedFuture("message")
+                .thenApplyAsync(s -> {
+                    assertTrue(Thread.currentThread().isDaemon());
+                    randomSleep(2);
+                    return s.toUpperCase();
+                });
         assertNull(cf.getNow(null));
         assertEquals("MESSAGE", cf.join());
     }
 
     static void thenApplyAsyncWithExecutorExample() {
-        CompletableFuture<String> cf = CompletableFuture.completedFuture("message").thenApplyAsync(s -> {
-            assertTrue(Thread.currentThread().getName().startsWith("custom-executor-"));
-            assertFalse(Thread.currentThread().isDaemon());
-            randomSleep(2);
-            return s.toUpperCase();
-        }, executor);
+        CompletableFuture<String> cf = CompletableFuture.completedFuture("message")
+                .thenApplyAsync(s -> {
+                    assertTrue(Thread.currentThread().getName().startsWith("custom-executor-"));
+                    assertFalse(Thread.currentThread().isDaemon());
+                    randomSleep(2);
+                    return s.toUpperCase();
+                }, executor);
         assertNull(cf.getNow(null));
         assertEquals("MESSAGE", cf.join());
     }
@@ -74,7 +80,7 @@ public class CompletableFutureApp {
     private static void sleepEnough(int seconds) {
         try {
             Thread.sleep((seconds + 1) * 1000);
-        }catch (InterruptedException e) {
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
@@ -82,7 +88,7 @@ public class CompletableFutureApp {
     private static void randomSleep(int seconds) {
         try {
             Thread.sleep(new Random().nextInt(seconds) * 1000);
-        }catch (InterruptedException e) {
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }

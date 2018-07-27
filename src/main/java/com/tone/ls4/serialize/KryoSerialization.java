@@ -3,7 +3,6 @@ package com.tone.ls4.serialize;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryo.io.Input;
 import com.esotericsoftware.kryo.io.Output;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
@@ -12,6 +11,7 @@ import java.io.ByteArrayOutputStream;
  * @date 2018/5/16
  */
 public class KryoSerialization implements Serialization {
+
     @Override
     public byte[] serialize(Object obj) {
         Kryo kryo = kryoLocal.get();

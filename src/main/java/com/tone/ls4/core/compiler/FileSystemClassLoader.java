@@ -1,8 +1,13 @@
 package com.tone.ls4.core.compiler;
 
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class FileSystemClassLoader extends ClassLoader {
+
     private String rootDir;
 
     public FileSystemClassLoader(String rootDir) {
@@ -12,9 +17,9 @@ public class FileSystemClassLoader extends ClassLoader {
     @Override
     protected Class<?> findClass(String name) throws ClassNotFoundException {
         byte[] classData = getClassData(name);
-        if(classData == null) {
+        if (classData == null) {
             throw new ClassNotFoundException();
-        }else {
+        } else {
             return defineClass(name, classData, 0, classData.length);
         }
     }
@@ -31,7 +36,7 @@ public class FileSystemClassLoader extends ClassLoader {
                 baos.write(buffer, 0, bytesNumRead);
             }
             return baos.toByteArray();
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
